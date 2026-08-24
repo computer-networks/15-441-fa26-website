@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fall 2026 course site for CMU 15-441/641: Computer Networks.">
+  <title>15-441/641: Computer Networks — Fall 2026</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/calendar-config.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-row">
+      <a class="course-name" href="#top">15-441/641: Computer Networks</a>
+      <span>Fall 2026 · Carnegie Mellon University</span>
+    </div>
+  </header>
+
+  <div class="shell page" id="top">
+    <aside class="contents" aria-label="Page contents">
+      <strong>Contents</strong>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#links">Course links</a></li>
+        <li><a href="#this-week">This week</a></li>
+        <li><a href="#due-dates">Due dates</a></li>
+        <li><a href="#office-hours">OH &amp; recitations</a></li>
+        <li><a href="#semester-schedule">Semester schedule</a></li>
+        <li><a href="#staff">Staff</a></li>
+      </ul>
+    </aside>
+
+    <main id="content">
+      <h1>Computer Networks and the Internet</h1>
+      <div class="upcoming" role="status" aria-live="polite">
+        <strong>Upcoming deadline</strong>
+        <span id="upcoming-due">Checking due dates…</span>
+      </div>
+
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>This is an introductory course in computer networking, with an emphasis on the protocols and systems that make up the Internet. Students learn not only how networks work today, but why they are designed the way they are and how they are likely to evolve.</p>
+        <p><strong>Lecture room:</strong> SH 105<br><strong>Lecture time:</strong> 2:00–3:20 PM every Tuesday and Thursday</p>
+        <p><strong>Topics:</strong> routing, congestion control, internetworking, naming, the web and content distribution, video streaming, and network security.</p>
+        <p><strong>Prerequisites:</strong> 15-213/513 (Introduction to Computer Systems) required; 17-214 (Principles of Software Construction) recommended.</p>
+      </section>
+
+      <section id="links">
+        <h2>Course links</h2>
+        <div class="course-links">
+          <div><span class="link-button disabled" aria-disabled="true">Gradescope</span><p>Assignments and projects.</p></div>
+          <div><a class="link-button" href="https://edstem.org/us/courses/102241/discussion">Discussion board</a><p>Discuss problems and ask questions.</p></div>
+          <div><a class="link-button" href="https://edstem.org/us/courses/102241/lessons">Readings</a><p>Slides and course materials.</p></div>
+          <div><span class="link-button disabled" aria-disabled="true">Professor Sherry 1:1</span><p>Book an individual meeting.</p></div>
+          <div><span class="link-button disabled" aria-disabled="true">Slip-day requests</span><p>Request additional project time when needed.</p></div>
+          <div><span class="link-button disabled" aria-disabled="true">Syllabus</span><p>Course policies, grading, and expectations.</p></div>
+        </div>
+      </section>
+
+      <section id="this-week">
+        <h2>This week overview</h2>
+        <div class="api-calendar" id="api-calendar" hidden>
+          <div class="api-calendar-head" id="calendar-head"></div>
+          <div class="api-calendar-body" id="calendar-body"></div>
+        </div>
+        <div class="calendar-frame" id="calendar-fallback">
+          <iframe class="course-calendar" title="Read-only weekly course calendar" src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=America%2FNew_York&amp;mode=WEEK&amp;showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;src=Y18wMTk5OGJlZjllYjIyNmRlNDMxY2YwN2FjMjc5YWJmZmExYzM2NGFhYzRmNDQ0NWFmNmFmNTljYzFlOTU5MjAxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23b00" scrolling="no" tabindex="-1"></iframe>
+        </div>
+        <p class="calendar-error" id="calendar-error" hidden>Live calendar unavailable; showing the Google Calendar fallback.</p>
+        <div class="calendar-toolbar">
+          <span>All times ET</span>
+          <div class="week-arrows" id="calendar-navigation" hidden>
+            <button type="button" id="previous-week" aria-label="Show previous week">←</button>
+            <button type="button" id="next-week" aria-label="Show next week">→</button>
+          </div>
+          <a href="https://calendar.google.com/calendar/r?cid=Y18wMTk5OGJlZjllYjIyNmRlNDMxY2YwN2FjMjc5YWJmZmExYzM2NGFhYzRmNDQ0NWFmNmFmNTljYzFlOTU5MjAxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">Add to Google Calendar</a>
+        </div>
+      </section>
+
+      <section id="due-dates">
+        <h2>Due dates</h2>
+        <table class="due-table">
+          <thead><tr><th>Assignment</th><th>Due</th></tr></thead>
+          <tbody id="due-list">
+            <!-- Add data-due in ISO format, e.g. data-due="2026-09-04T23:59:00-04:00". -->
+            <tr><td>Course deadlines</td><td><span class="pending">To be announced</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="office-hours">
+        <h2>Office hours and recitations</h2>
+        <div class="schedule-tables">
+          <div>
+            <h3>Office hours</h3>
+            <p class="schedule-note">Times may change; check the <a href="#this-week">calendar</a> for updates.</p>
+            <table class="weekly-table">
+              <thead><tr><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
+              <tbody>
+                <tr><td><ul><li>To be announced</li></ul></td><td><ul><li>To be announced</li></ul></td><td><ul><li>To be announced</li></ul></td><td><ul><li>To be announced</li></ul></td><td><ul><li>To be announced</li></ul></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h3>Recitations</h3>
+            <table class="weekly-table">
+              <thead><tr><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
+              <tbody>
+                <tr><td><ul><li>To be announced</li></ul></td><td><ul><li>To be announced</li></ul></td><td><ul><li>To be announced</li></ul></td><td><ul><li>To be announced</li></ul></td><td><ul><li>To be announced</li></ul></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="semester-schedule">
+        <h2>Semester schedule <small>[SUBJECT TO CHANGE!]</small></h2>
+        <p><span class="pending">To be announced</span></p>
+      </section>
+
+      <section id="staff">
+        <h2>Staff</h2>
+        <div class="staff-list">
+          <article class="person person-instructor">
+            <img src="assets/img/justine.jpg" alt="Justine Sherry" width="112" height="112">
+            <div><h3>Justine Sherry</h3><p>Instructor</p><a href="mailto:sherry@cs.cmu.edu">sherry@cs.cmu.edu</a></div>
+          </article>
+          <article class="person person-ta">
+            <img src="assets/img/yiran.jpg" alt="Yiran Lei" width="112" height="112">
+            <div><h3>Yiran Lei</h3><p>Teaching Assistant</p><a href="mailto:yiranlei@cs.cmu.edu">yiranlei@cs.cmu.edu</a></div>
+          </article>
+          <article class="person person-ta">
+            <img src="assets/img/isabel.png" alt="Isabel Suizo" width="112" height="112">
+            <div><h3>Isabel Suizo</h3><p>Teaching Assistant</p><a href="mailto:isabel@cmu.edu">isabel@cmu.edu</a></div>
+          </article>
+          <article class="person person-ta">
+            <div class="avatar-placeholder" aria-hidden="true">AB</div>
+            <div><h3>Ayushi Bansal</h3><p>Teaching Assistant</p><a href="mailto:ayushib@andrew.cmu.edu">ayushib@andrew.cmu.edu</a></div>
+          </article>
+          <article class="person person-ta">
+            <img src="assets/img/yujing.jpg" alt="Yujing Wang" width="112" height="112">
+            <div><h3>Yujing Wang</h3><p>Teaching Assistant</p><a href="mailto:yujingw@andrew.cmu.edu">yujingw@andrew.cmu.edu</a></div>
+          </article>
+          <article class="person person-ta">
+            <img src="assets/img/mingjun.png" alt="Mingjun Li" width="112" height="112">
+            <div><h3>Mingjun Li</h3><p>Teaching Assistant</p><a href="mailto:mingjunl@andrew.cmu.edu">mingjunl@andrew.cmu.edu</a></div>
+          </article>
+          <article class="person person-admin">
+            <img src="assets/img/emily.jpg" alt="Emily Spencer" width="112" height="112">
+            <div><h3>Emily Spencer</h3><p>Course Administrator</p><a href="mailto:emilyspe@andrew.cmu.edu">emilyspe@andrew.cmu.edu</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer><div class="shell">15-441/641: Computer Networks · Carnegie Mellon University · Fall 2026</div></footer>
+</body>
+</html>
