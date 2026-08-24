@@ -88,6 +88,21 @@
     return Object.fromEntries(parts.filter((part) => part.type !== "literal").map((part) => [part.type, part.value]));
   };
 
+  const updateCurrentTimeMarker = () => {
+    document.querySelectorAll(".calendar-now").forEach((marker) => marker.remove());
+    const now = new Date();
+    const parts = eventParts(now);
+    const minutes = Number(parts.hour) * 60 + Number(parts.minute);
+    if (minutes < 540 || minutes > 1020) return;
+    const key = `${parts.year}-${parts.month}-${parts.day}`;
+    const column = document.querySelector(`.calendar-day-column[data-date="${key}"]`);
+    if (!column) return;
+    const marker = document.createElement("div");
+    marker.className = "calendar-now";
+    marker.style.top = `${(minutes - 540) / 480 * 100}%`;
+    column.append(marker);
+  };
+
   const render = (events) => {
     const head = document.querySelector("#calendar-head");
     const body = document.querySelector("#calendar-body");
@@ -114,6 +129,7 @@
       const column = document.createElement("div");
       column.className = "calendar-day-column";
       const key = date.toISOString().slice(0, 10);
+      column.dataset.date = key;
       events.filter((event) => event.start?.dateTime && event.end?.dateTime).forEach((event) => {
         const start = eventParts(event.start.dateTime);
         const end = eventParts(event.end.dateTime);
@@ -149,6 +165,7 @@
       });
       body.append(column);
     });
+    updateCurrentTimeMarker();
     calendar.hidden = false;
     document.querySelector("#calendar-fallback").hidden = true;
     document.querySelector("#calendar-navigation").hidden = false;
@@ -183,5 +200,6 @@
     mondayUtc.setUTCDate(mondayUtc.getUTCDate() + 7);
     load();
   });
+  setInterval(updateCurrentTimeMarker, 60 * 1000);
   load();
 })();
