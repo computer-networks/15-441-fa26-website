@@ -1,26 +1,62 @@
 (() => {
   const output = document.querySelector("#upcoming-due");
-  const rows = [...document.querySelectorAll("#due-list tr[data-due]")];
   const now = new Date();
-  const upcoming = rows
-    .map((row) => ({ row, date: new Date(row.dataset.due) }))
-    .filter(({ date }) => !Number.isNaN(date.getTime()) && date >= now)
-    .sort((a, b) => a.date - b.date)[0];
+  const rows = [...document.querySelectorAll("#due-list tr[data-due], #due-list tr[data-due-date]")];
+  const entries = rows
+    .map((row) => ({
+      row,
+      date: new Date(row.dataset.due || `${row.dataset.dueDate}T23:59:59`),
+      dateOnly: Boolean(row.dataset.dueDate),
+    }))
+    .filter(({ date }) => !Number.isNaN(date.getTime()))
+    .sort((a, b) => a.date - b.date);
+  const firstUpcoming = entries.findIndex(({ date }) => date >= now);
+  const visibleStart = firstUpcoming === -1
+    ? Math.max(0, entries.length - 3)
+    : Math.min(firstUpcoming, Math.max(0, entries.length - 3));
+  const visibleEnd = Math.min(entries.length, visibleStart + 3);
+  const past = entries.slice(0, visibleStart);
+  const later = entries.slice(visibleEnd);
+
+  const addFoldControl = (buttonId, items, label) => {
+    const button = document.querySelector(buttonId);
+    if (!button || !items.length) return;
+    let expanded = false;
+    items.forEach(({ row }) => row.classList.add("due-collapsed"));
+    const update = () => {
+      button.textContent = `${expanded ? "Hide" : "Show"} ${items.length} ${label} deadline${items.length === 1 ? "" : "s"}`;
+      button.setAttribute("aria-expanded", String(expanded));
+    };
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      expanded = !expanded;
+      items.forEach(({ row }) => row.classList.toggle("due-collapsed", !expanded));
+      update();
+    });
+    update();
+  };
+  addFoldControl("#toggle-past-due", past, "past");
+  addFoldControl("#toggle-later-due", later, "later");
+
+  const upcoming = firstUpcoming === -1 ? null : entries[firstUpcoming];
 
   if (!upcoming) {
     output.textContent = "No upcoming deadlines announced.";
     return;
   }
 
+  upcoming.row.classList.add("current-due");
+  upcoming.row.setAttribute("aria-current", "true");
   const name = upcoming.row.cells[0].textContent.trim();
-  const formatted = new Intl.DateTimeFormat("en-US", {
+  const options = {
     weekday: "short",
     month: "short",
     day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    timeZoneName: "short",
-  }).format(upcoming.date);
+  };
+  if (!upcoming.dateOnly) Object.assign(options, {
+    hour: "numeric", minute: "2-digit", timeZoneName: "short",
+  });
+  const formatted = new Intl.DateTimeFormat("en-US", options).format(upcoming.date);
   output.textContent = `${name} — ${formatted}`;
 })();
 

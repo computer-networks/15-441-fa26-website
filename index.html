@@ -42,7 +42,7 @@
       <section id="overview">
         <h2>Overview</h2>
         <p>This is an introductory course in computer networking, with an emphasis on the protocols and systems that make up the Internet. Students learn not only how networks work today, but why they are designed the way they are and how they are likely to evolve.</p>
-        <p><strong>Lecture room:</strong> SH 105<br><strong>Lecture time:</strong> 2:00–3:20 PM every Tuesday and Thursday</p>
+        <p class="lecture-details"><span><strong>Lecture room:</strong> SH 105</span><span><strong>Lecture time:</strong> 2:00–3:20 PM every Tuesday and Thursday</span></p>
         <p><strong>Topics:</strong> routing, congestion control, internetworking, naming, the web and content distribution, video streaming, and network security.</p>
         <p><strong>Prerequisites:</strong> 15-213/513 (Introduction to Computer Systems) required; 17-214 (Principles of Software Construction) recommended.</p>
       </section>
@@ -83,10 +83,27 @@
         <table class="due-table">
           <thead><tr><th>Assignment</th><th>Due</th></tr></thead>
           <tbody id="due-list">
-            <!-- Add data-due in ISO format, e.g. data-due="2026-09-04T23:59:00-04:00". -->
-            <tr><td>Course deadlines</td><td><span class="pending">To be announced</span></td></tr>
+            <tr data-due-date="2026-08-28"><td>HW0</td><td>Fri, Aug 28</td></tr>
+            <tr data-due-date="2026-09-02"><td>Project 0</td><td>Wed, Sep 2</td></tr>
+            <tr data-due-date="2026-09-09"><td>Project 1 — Checkpoint 1</td><td>Wed, Sep 9</td></tr>
+            <tr data-due-date="2026-09-16"><td>HW1</td><td>Wed, Sep 16</td></tr>
+            <tr data-due-date="2026-09-23"><td>Project 1 — Checkpoint 2</td><td>Wed, Sep 23</td></tr>
+            <tr data-due-date="2026-10-01"><td>Exam 1</td><td>Thu, Oct 1</td></tr>
+            <tr data-due-date="2026-10-07"><td>Project 2 — Checkpoint 1</td><td>Wed, Oct 7</td></tr>
+            <tr data-due-date="2026-10-09"><td>HW2</td><td>Fri, Oct 9</td></tr>
+            <tr data-due-date="2026-10-23"><td>HW3</td><td>Fri, Oct 23</td></tr>
+            <tr data-due-date="2026-10-28"><td>Project 2 — Checkpoint 2</td><td>Wed, Oct 28</td></tr>
+            <tr data-due-date="2026-11-05"><td>Exam 2</td><td>Thu, Nov 5</td></tr>
+            <tr data-due-date="2026-11-11"><td>Project 3 — Checkpoint 1</td><td>Wed, Nov 11</td></tr>
+            <tr data-due-date="2026-11-18"><td>HW4</td><td>Wed, Nov 18</td></tr>
+            <tr data-due-date="2026-11-25"><td>Project 3 — Checkpoint 2</td><td>Wed, Nov 25</td></tr>
+            <tr data-due-date="2026-12-03"><td>Exam 3</td><td>Thu, Dec 3</td></tr>
           </tbody>
         </table>
+        <div class="due-controls" aria-label="Additional deadlines">
+          <button type="button" id="toggle-past-due" hidden></button>
+          <button type="button" id="toggle-later-due" hidden></button>
+        </div>
       </section>
 
       <section id="office-hours">
@@ -123,8 +140,10 @@
       </section>
 
       <section id="semester-schedule">
-        <h2>Semester schedule <small>[SUBJECT TO CHANGE!]</small></h2>
-        <p><span class="pending">To be announced</span></p>
+        <h2>Semester schedule <small>Subject to change</small></h2>
+        <div class="sheet-frame" id="semester-sheet">
+          <iframe title="Fall 2026 semester schedule" src="https://docs.google.com/spreadsheets/d/1m32E0Jth87pTgeuBH24GAJ_N7scXcutr3fQ3MdeRvH4/preview?gid=0" loading="lazy"></iframe>
+        </div>
       </section>
 
       <section id="staff">
