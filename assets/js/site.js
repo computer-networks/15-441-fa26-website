@@ -152,6 +152,7 @@
     calendar.hidden = false;
     document.querySelector("#calendar-fallback").hidden = true;
     document.querySelector("#calendar-navigation").hidden = false;
+    document.querySelector("#add-calendar").hidden = false;
   };
 
   const load = async () => {
@@ -171,7 +172,6 @@
       render(data.items || []);
     } catch (error) {
       if (cached?.events) render(cached.events);
-      else document.querySelector("#calendar-error").hidden = false;
       console.warn(error);
     }
   };

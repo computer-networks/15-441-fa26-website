@@ -66,16 +66,15 @@
           <div class="api-calendar-body" id="calendar-body"></div>
         </div>
         <div class="calendar-frame" id="calendar-fallback">
-          <iframe class="course-calendar" title="Read-only weekly course calendar" src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=America%2FNew_York&amp;mode=WEEK&amp;showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;src=Y18wMTk5OGJlZjllYjIyNmRlNDMxY2YwN2FjMjc5YWJmZmExYzM2NGFhYzRmNDQ0NWFmNmFmNTljYzFlOTU5MjAxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23b00" scrolling="no" tabindex="-1"></iframe>
+          <iframe class="course-calendar" title="Interactive weekly course calendar" src="https://calendar.google.com/calendar/embed?height=650&amp;wkst=2&amp;ctz=America%2FNew_York&amp;mode=WEEK&amp;showTitle=0&amp;showNav=1&amp;showDate=1&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;src=Y18wMTk5OGJlZjllYjIyNmRlNDMxY2YwN2FjMjc5YWJmZmExYzM2NGFhYzRmNDQ0NWFmNmFmNTljYzFlOTU5MjAxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23b00" scrolling="yes" tabindex="0"></iframe>
         </div>
-        <p class="calendar-error" id="calendar-error" hidden>Live calendar unavailable; showing the Google Calendar fallback.</p>
         <div class="calendar-toolbar">
           <span>All times ET</span>
           <div class="week-arrows" id="calendar-navigation" hidden>
             <button type="button" id="previous-week" aria-label="Show previous week">←</button>
             <button type="button" id="next-week" aria-label="Show next week">→</button>
           </div>
-          <a href="https://calendar.google.com/calendar/r?cid=Y18wMTk5OGJlZjllYjIyNmRlNDMxY2YwN2FjMjc5YWJmZmExYzM2NGFhYzRmNDQ0NWFmNmFmNTljYzFlOTU5MjAxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">Add to Google Calendar</a>
+          <a id="add-calendar" href="https://calendar.google.com/calendar/r?cid=Y18wMTk5OGJlZjllYjIyNmRlNDMxY2YwN2FjMjc5YWJmZmExYzM2NGFhYzRmNDQ0NWFmNmFmNTljYzFlOTU5MjAxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" hidden>Add to Google Calendar</a>
         </div>
       </section>
 
