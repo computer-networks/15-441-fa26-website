@@ -65,6 +65,9 @@
   const TIME_ZONE = "America/New_York";
   const CACHE_KEY = "course-calendar-week-v1";
   const CACHE_TTL = 10 * 60 * 1000;
+  const CALENDAR_START_MINUTES = 9 * 60;
+  const CALENDAR_END_MINUTES = 18 * 60;
+  const CALENDAR_RANGE_MINUTES = CALENDAR_END_MINUTES - CALENDAR_START_MINUTES;
   const apiKey = window.COURSE_CALENDAR_API_KEY;
   const calendar = document.querySelector("#api-calendar");
   if (!calendar || !apiKey) return;
@@ -129,13 +132,13 @@
     const now = new Date();
     const parts = eventParts(now);
     const minutes = Number(parts.hour) * 60 + Number(parts.minute);
-    if (minutes < 540 || minutes > 1020) return;
+    if (minutes < CALENDAR_START_MINUTES || minutes > CALENDAR_END_MINUTES) return;
     const key = `${parts.year}-${parts.month}-${parts.day}`;
     const column = document.querySelector(`.calendar-day-column[data-date="${key}"]`);
     if (!column) return;
     const marker = document.createElement("div");
     marker.className = "calendar-now";
-    marker.style.top = `${(minutes - 540) / 480 * 100}%`;
+    marker.style.top = `${(minutes - CALENDAR_START_MINUTES) / CALENDAR_RANGE_MINUTES * 100}%`;
     column.append(marker);
   };
 
@@ -155,9 +158,10 @@
     });
     const times = document.createElement("div");
     times.className = "calendar-times";
-    for (let hour = 9; hour <= 17; hour += 1) {
+    for (let hour = 9; hour <= 18; hour += 1) {
       const label = document.createElement("span");
       label.textContent = new Date(2000, 0, 1, hour).toLocaleTimeString("en-US", { hour: "numeric" });
+      label.style.top = `${(hour * 60 - CALENDAR_START_MINUTES) / CALENDAR_RANGE_MINUTES * 100}%`;
       times.append(label);
     }
     body.append(times);
@@ -172,11 +176,11 @@
         if (`${start.year}-${start.month}-${start.day}` !== key) return;
         const startMinutes = Number(start.hour) * 60 + Number(start.minute);
         const endMinutes = Number(end.hour) * 60 + Number(end.minute);
-        if (endMinutes <= 540 || startMinutes >= 1020) return;
+        if (endMinutes <= CALENDAR_START_MINUTES || startMinutes >= CALENDAR_END_MINUTES) return;
         const block = document.createElement("div");
         block.className = "calendar-event";
-        block.style.top = `${Math.max(0, startMinutes - 540) / 480 * 100}%`;
-        block.style.height = `${Math.max(4, (Math.min(1020, endMinutes) - Math.max(540, startMinutes)) / 480 * 100)}%`;
+        block.style.top = `${Math.max(0, startMinutes - CALENDAR_START_MINUTES) / CALENDAR_RANGE_MINUTES * 100}%`;
+        block.style.height = `${Math.max(4, (Math.min(CALENDAR_END_MINUTES, endMinutes) - Math.max(CALENDAR_START_MINUTES, startMinutes)) / CALENDAR_RANGE_MINUTES * 100)}%`;
         const title = document.createElement("strong");
         title.textContent = event.summary || "Course event";
         const time = document.createElement("span");
